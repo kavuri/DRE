@@ -130,6 +130,10 @@ module.exports = function () {
 
     console.log("DB URL: ", app.get('db_url') + ":27017/" + app.get('db_name'));
 
+    // Yodlee specific bindings
+    var ydl = require('../lib/ydl');
+    app.use(ydl);
+
     var storage = require('../lib/storage');
     app.use(storage);
 
@@ -159,19 +163,19 @@ module.exports = function () {
 
     var notes = require('../lib/notes');
     app.use(notes);
-    
+
     var medications = require('../lib/medications');
     app.use(medications);
-    
+
     var medapi = require('../lib/medapi');
     app.use(medapi);
-    
+
     var npiapi = require('../lib/npiapi');
     app.use(npiapi);
 
     var metadata = require('../lib/metadata');
     app.use(metadata);
-    
+
     var demo = require('../lib/demo');
     app.use(demo);
 
